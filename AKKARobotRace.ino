@@ -116,6 +116,6 @@ void auto_tracking(){
 }
 
 void loop(){
- 
-auto_tracking();
+  controller.run();
+//auto_tracking();
 }

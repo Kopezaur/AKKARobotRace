@@ -28,6 +28,13 @@ public:
     m_current_mode = &m_line_tracking_mode;
   }
 
+  void run() {
+    Mode* next_mode = m_current_mode->run();
+    if (next_mode != NULL) {
+      m_current_mode = next_mode;
+    }
+  }
+
 private:
   Mode* m_current_mode;
 };
