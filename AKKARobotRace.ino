@@ -1,4 +1,9 @@
  #include "configuration.h"
+#include "controller.h"
+
+
+Controller controller;
+ 
  char sensor[5];
  /*read sensor value string, 1 stands for black, 0 starnds for white, i.e 10000 means the first sensor(from left) detect black line, other 4 sensors detected white ground */
 String read_sensor_values()
@@ -114,4 +119,3 @@ void loop(){
  
 auto_tracking();
 }
-
