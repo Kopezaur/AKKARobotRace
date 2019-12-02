@@ -21,10 +21,11 @@ public:
   ManualMode m_manual_mode;
 
   MoveDriver m_move_driver;
-  IRDriver m_ir_driver;
+  IRDriver m_L_ir_driver;
+  IRDriver m_R_ir_driver;
   USDriver m_us_driver;
 
-  Controller() : m_avoidance_mode(this), m_funny_move_mode(this), m_line_tracking_mode(this), m_manual_mode(this), m_move_driver(), m_ir_driver(0), m_us_driver(0, 0) {
+  Controller() : m_avoidance_mode(this), m_funny_move_mode(this), m_line_tracking_mode(this), m_manual_mode(this), m_move_driver(), m_L_ir_driver(4), m_R_ir_driver(5), m_us_driver(0, 0) {
     m_current_mode = &m_line_tracking_mode;
   }
 

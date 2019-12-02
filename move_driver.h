@@ -1,29 +1,53 @@
 #ifndef MOVE_DRIVER__H
 #define MOVE_DRIVER__H
 
-#include "motor_driver.h"
-
-
 class MoveDriver {
 public:
-  MoveDriver() : m_m0_driver(0, 0, 0), m_m1_driver(0, 0, 0), m_m2_driver(0, 0, 0), m_m3_driver(0, 0, 0) {
-    
+  MoveDriver() {
+    pinMode(dir1PinL, OUTPUT); 
+    pinMode(dir2PinL, OUTPUT); 
+    pinMode(speedPinL, OUTPUT);  
+    pinMode(dir1PinR, OUTPUT);
+    pinMode(dir2PinR, OUTPUT); 
+    pinMode(speedPinR, OUTPUT); 
   }
 
   void set_speed(float linear, float rotation) {
     // Inverse kinematics here.
     
-    m_m0_driver.set_speed(0.0f);
-    m_m1_driver.set_speed(0.0f);
-    m_m2_driver.set_speed(0.0f);
-    m_m3_driver.set_speed(0.0f);
+    float L_speed = linear - rotation;
+    float R_speed = linear + rotation;
+
+    set_L_speed(L_speed);
+    set_R_speed(R_speed);
   }
 
 private:
-  MotorDriver m_m0_driver;
-  MotorDriver m_m1_driver;
-  MotorDriver m_m2_driver;
-  MotorDriver m_m3_driver;
+  void set_L_speed(float speed) {
+    if (speed >= 0.0f) {
+      digitalWrite(dir1PinL, HIGH);
+      digitalWrite(dir2PinL, LOW);
+    }
+    else {
+      digitalWrite(dir1PinL, LOW);
+      digitalWrite(dir2PinL, HIGH);
+    }
+
+    analogWrite(speedPinL, speed*255.0f); 
+  }
+
+  void set_R_speed(float speed) {
+    if (speed >= 0.0f) {
+      digitalWrite(dir1PinR, HIGH);
+      digitalWrite(dir2PinR, LOW);
+    }
+    else {
+      digitalWrite(dir1PinR, LOW);
+      digitalWrite(dir2PinR, HIGH);
+    }
+
+    analogWrite(speedPinR, speed*255.0f); 
+  }
 };
 
 #endif

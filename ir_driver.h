@@ -3,13 +3,16 @@
 
 class IRDriver {
 public:
-  IRDriver(int pin) {
+  IRDriver(int pin) : m_pin(pin) {
     
   }
 
-  int get_value() {
-    return 0;
+  float get_value() {
+    return ((float)analogRead(m_pin))/1024.0f;
   }
+
+private:
+  int m_pin;
 };
 
 #endif
