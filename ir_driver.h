@@ -1,3 +1,6 @@
+#ifndef IR_DRIVER__H
+#define IR_DRIVER__H
+
 class IRDriver {
 public:
   IRDriver(int pin) {
@@ -8,3 +11,5 @@ public:
     return 0;
   }
 };
+
+#endif

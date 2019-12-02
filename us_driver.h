@@ -1,3 +1,7 @@
+#ifndef US_DRIVER__H
+#define US_DRIVER__H
+
+
 class USDriver {
 public:
   USDriver(int trig_pin, int echo_pin) {
@@ -8,3 +12,5 @@ public:
     return 0.0f;
   }
 };
+
+#endif
