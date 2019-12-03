@@ -15,7 +15,7 @@ void setup()
 
 void loop(){
   //my_serial.println("lalala");
-  delay(100);
+  //delay(100);
   
   
   controller.run();

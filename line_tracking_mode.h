@@ -9,6 +9,10 @@ public:
   LineTrackingMode(Controller* controller);
 
   Mode* run();
+
+  int counter;
+  int limitDist;
+  int maxCounter;
 };
 
 #endif

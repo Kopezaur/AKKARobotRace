@@ -10,24 +10,27 @@ Mode* ManualMode::run() {
     char data = m_controller->m_blutooth.read();
 
     switch (data) {
-      case '2':
-        m_controller->m_move_driver.set_speed(0.5f, 0.0f);
+      case '2': // Forward
+        m_controller->m_move_driver.set_speed(0.44f, 0.0f);
         break;
-      case '8':
-        m_controller->m_move_driver.set_speed(-0.5f, 0.0f);
+      case '8': // Backwards
+        m_controller->m_move_driver.set_speed(-0.44f, 0.0f);
         break;
-      case '4':
-        m_controller->m_move_driver.set_speed(0.5f, 0.5f);
+      case '4': // Left
+        m_controller->m_move_driver.set_speed(0.44f, 0.35f);
         break;
-      case '6':
-        m_controller->m_move_driver.set_speed(0.5f, -0.5f);
+      case '6': // Right
+        m_controller->m_move_driver.set_speed(0.44f, -0.35f);
         break;
-      case '5':
+      case '5': // Stop
         m_controller->m_move_driver.set_speed(0.0f, 0.0f);
         break;
+      case '1': // Mode
+        m_controller->m_move_driver.set_speed(0.0f, 0.0f);
+        return &m_controller->m_line_tracking_mode;
     }
 
-    m_controller->m_blutooth.println("hodor");
+    //m_controller->m_blutooth.println("hodor");
     
   }
   return NULL;

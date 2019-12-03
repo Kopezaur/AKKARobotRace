@@ -5,6 +5,12 @@
 
 
 class AvoidanceMode : public Mode {
+
+  int counter;
+  int limitDist;
+  int maxCounter;
+  int obsDelay;
+  
 public:
   AvoidanceMode(Controller* controller);
 

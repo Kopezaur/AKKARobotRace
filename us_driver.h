@@ -17,9 +17,12 @@ public:
     digitalWrite(m_trig_pin,HIGH);
     delayMicroseconds(15);
     digitalWrite(m_trig_pin,LOW);
-    echo_distance=pulseIn(m_echo_pin,HIGH);
+    echo_distance=pulseIn(m_echo_pin,HIGH, 10000);
     echo_distance=(float)echo_distance*0.01657; //how far away is the object in cm
     //Serial.println((int)echo_distance);
+    if (echo_distance < 0.01) {
+      return 10000.0f;
+    }
     return round(echo_distance);
   }
 
